@@ -1,22 +1,16 @@
-enum TipoFigura {
-    circulo = 'circulo',
-    retangulo = 'retangulo',
-    quadrado = 'quadrado'
-}
-
 type Figura = 
-    {tipo: TipoFigura.circulo, raio: number} |
-    {tipo: TipoFigura.retangulo, a: number, c: number} |
-    {tipo: TipoFigura.quadrado, l: number};
+    {tipo: 'circulo', raio: number} |
+    {tipo: 'retangulo', a: number, l: number} |
+    {tipo: 'quadrado', l: number};
 
-function calcularArea(figura: Figura) {
+function calcularArea(figura: Figura): number {
     switch(figura.tipo){
-        case TipoFigura.circulo: return Math.PI * figura.raio ** 2;
-        case TipoFigura.retangulo: return figura.a * figura.c;
-        case TipoFigura.quadrado: return figura.l ** 2;
+        case 'circulo': return Math.PI * figura.raio ** 2;
+        case 'retangulo': return figura.a * figura.l;
+        case 'quadrado': figura.l ** 2;
     }
     throw new Error('Figura inválida');
 }    
 
-const circulo: Figura = {tipo: TipoFigura.circulo, raio: 2};
+const circulo: Figura = {tipo: 'circulo', raio: 2};
 calcularArea(circulo);
